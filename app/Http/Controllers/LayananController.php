@@ -49,7 +49,7 @@ class LayananController extends Controller
      */
     public function edit(string $id)
     {
-        $layanan = Layanan::where('id_layanan', $id)->first();
+        $layanan = Layanan::where('id_layanan', operator: $id)->first();
         return view('Layanan.edit', compact('layanan'));
     }
 

@@ -14,6 +14,7 @@
         <div class="card shadow p-3 mb-5 bg-body-tertiary rounded">
             <div class="card-header">
                 Transaksi
+                <a class="btn btn-success" href="/transaksi/create">Tambah</a>
                  </div>
                  
                  <div class="card-body">
@@ -33,30 +34,23 @@
                 </tr>
             </thead>
             <tbody class="text-center">
+                @foreach ($transaksis as $item)
                 <tr>
-                    <td>1</td>
-                    <td>11-2-2024</td>
-                    <td>Warsito</td>
-                    <td>Cuci Saja</td>
-                    <td>5 kg</td>
-                    <td>3.000</td>
-                    <td>15.000</td>
-                    <td>Selesai</td>
-                    <td>Lunas</td>
-                    <td><a class="btn btn-warning">Ubah</a> <a class="btn btn-danger">Hapus</a></td>
+                    <td>{{ $loop -> iteration}}</td>
+                    <td>{{ $item -> waktu_transaksi }}</td>
+                    <td>{{ $item -> nama_pelanggan }}</td>
+                    <td>{{ $item ->  layanan -> nama_layanan }}</td>
+                    <td>{{ $item -> berat }}</td>
+                    <td>{{ $item -> layanan -> harga_per_kg }}</td>
+                    <td>sek</td>
+                    <td>{{ $item -> keterangan }}</td>
+                    <td>{{ $item -> pembayaran }}</td>
+                    <td><a class="btn btn-warning" href="/transaksi/edit/{{ $item -> id_transaksi }}">Ubah</a>
+                    <a class="btn btn-danger" href="/transaksi/destroy/{{ $item -> id_transaksi}}">Hapus</a>
+                    <a class="btn btn-warning" href="/transaksi/print/{{ $item -> id_transaksi }}">Print</a>
+                </td>
                 </tr>
-                <tr>
-                    <td>2</td>
-                    <td>12-2-2024</td>
-                    <td>Warsini</td>
-                    <td>Cuci Setrika</td>
-                    <td>10 kg</td>
-                    <td>5.000</td>
-                    <td>50.000</td>
-                    <td>Proses</td>
-                    <td>Belum Bayar <a class="btn btn-success">Bayar</a></td>
-                    <td><a class="btn btn-warning">Ubah</a> <a class="btn btn-danger">Hapus</a></td>
-                </tr>
+                @endforeach
             </tbody>
         </table>
        </div>

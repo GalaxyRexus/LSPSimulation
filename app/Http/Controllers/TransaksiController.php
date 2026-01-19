@@ -13,9 +13,9 @@ class TransaksiController extends Controller
      */
     public function index()
     {
-        $Layanans = Layanan::all();
-        $Transaksis = Transaksi::all();
-        return view ('Transaksi.index', compact('Layanans','Transaksis')); 
+        $transaksis = Transaksi::all();
+        $layanans = Layanan::all();
+        return view('Transaksi.index', compact('transaksis', 'layanans'));
     }
 
     /**
@@ -23,7 +23,8 @@ class TransaksiController extends Controller
      */
     public function create()
     {
-        //
+        $layanan = Layanan::all();
+        return view('Transaksi.tambah', compact('layanan'));
     }
 
     /**
@@ -31,7 +32,15 @@ class TransaksiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Transaksi::create([
+            'waktu_transaksi' => $request->waktu_transaksi,
+            'nama_pelanggan' => $request->nama_pelanggan,
+            'id_layanan' => $request->id_layanan,
+            'berat' => $request->berat,
+            'keterangan' => $request->keterangan,
+            'pembayaran' => $request->pembayaran,
+        ]);
+        return redirect('/transaksi');
     }
 
     /**
@@ -47,7 +56,9 @@ class TransaksiController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $transaksi = Transaksi::find($id);
+        $layanans = Layanan::all();
+        return view('transaksi.edit', compact('transaksi', 'layanans'));
     }
 
     /**
@@ -55,7 +66,16 @@ class TransaksiController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        Transaksi::where('id_transaksi', $id)
+            ->update([
+                'waktu_transaksi' => $request->waktu_transaksi,
+                'nama_pelanggan' => $request->nama_pelanggan,
+                'id_layanan' => $request->id_layanan,
+                'berat' => $request->berat,
+                'keterangan' => $request->keterangan,
+                'pembayaran' => $request->pembayaran
+            ]);
+        return redirect('/transaksi');
     }
 
     /**
@@ -63,6 +83,12 @@ class TransaksiController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $deleted = Transaksi::where('id_transaksi', $id)->delete();
+        return redirect('/transaksi');
+    }
+    public function print($id)
+    {
+        $transaksi = Transaksi::with('layanan')->where('id_transaksi', $id)->first();
+        return view('Transaksi.struk', compact('transaksi'));
     }
 }

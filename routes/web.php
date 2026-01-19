@@ -16,3 +16,9 @@ Route::post('/layanan/update/{id}', [App\Http\Controllers\LayananController::cla
 Route::get('/layanan/delete/{id}', [App\Http\Controllers\LayananController::class, 'destroy']);
 
 Route::get('/transaksi', [App\Http\Controllers\TransaksiController::class, 'index']);
+Route::get('/transaksi/create', [App\Http\Controllers\TransaksiController::class, 'create']);
+Route::post('/transaksi/store', [App\Http\Controllers\TransaksiController::class, 'store'])->name('transaksi.store');
+Route::get('/transaksi/edit/{id}', [App\Http\Controllers\TransaksiController::class,'edit']);
+Route::get('/transaksi/destroy/{id}',[App\Http\Controllers\TransaksiController::class, 'destroy']);
+
+Route::get('/transaksi/print/{id}', [App\Http\Controllers\TransaksiController::class, 'print']);
