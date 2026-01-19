@@ -37,16 +37,16 @@
                 @foreach ($transaksis as $item)
                 <tr>
                     <td>{{ $loop -> iteration}}</td>
-                    <td>{{ $item -> waktu_transaksi }}</td>
+                    <td>{{ date('d-m-Y',strtotime($item -> waktu_transaksi)) }}</td>
                     <td>{{ $item -> nama_pelanggan }}</td>
                     <td>{{ $item ->  layanan -> nama_layanan }}</td>
-                    <td>{{ $item -> berat }}</td>
-                    <td>{{ $item -> layanan -> harga_per_kg }}</td>
-                    <td>sek</td>
+                    <td>{{ $item -> berat }}kg</td>
+                    <td>Rp.{{ number_format($item -> layanan -> harga_per_kg, 0,',',',') }}</td>
+                    <td>Rp.{{ number_format($item -> layanan -> harga_per_kg * $item -> berat,0,',',',') }}</td>
                     <td>{{ $item -> keterangan }}</td>
                     <td>{{ $item -> pembayaran }}</td>
                     <td><a class="btn btn-warning" href="/transaksi/edit/{{ $item -> id_transaksi }}">Ubah</a>
-                    <a class="btn btn-danger" href="/transaksi/destroy/{{ $item -> id_transaksi}}">Hapus</a>
+                    <a onclick="return confirm('Apakah Anda Yakin Ingin Menghapus?');" class="btn btn-danger" href="/transaksi/destroy/{{ $item -> id_transaksi}}">Hapus</a>
                     <a class="btn btn-warning" href="/transaksi/print/{{ $item -> id_transaksi }}">Print</a>
                 </td>
                 </tr>
@@ -65,6 +65,11 @@
     $(document).ready( function () {
         $('#myTable').DataTable();
     } );
+</script>
+<script>
+    function Hapus(){
+       
+    }
 </script>
 </html>
 @endsection

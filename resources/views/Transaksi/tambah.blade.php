@@ -45,7 +45,7 @@
         </select>
       </label>
       </div>
-      <button type="submit" class="form-btn primary-default-btn transparent-btn">Sign in</button>
+      <button type="submit" class="form-btn primary-default-btn transparent-btn">Tambah</button>
     </form>
   </article>
     </div>

@@ -14,6 +14,7 @@
   <link rel="stylesheet" href="/datatable/datatables.min.css">
   <script src="{{ asset('/jquery/jquery-3.7.1.min.js') }}"></script>
   <script src="{{ asset('/datatable/datatables.min.js') }}"></script>
+  <script src="{{ asset ('/js/sweetalert2.js') }}"></script>
 </head>
 <body>
   <div class="layer"></div>
@@ -179,7 +180,6 @@
 <script src="/plugins/feather.min.js"></script>
 <!-- Custom scripts -->
 <script src="/js/script.js"></script>
-
 
 
 </body>

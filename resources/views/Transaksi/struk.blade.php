@@ -50,6 +50,7 @@
         
         .col-label {
             flex: 0 0 40%;
+            font-weight: bold;
             text-align: left;
         }
         
@@ -105,11 +106,11 @@
         </div>
         <div class="row">
             <div class="col-label">No. Telpon</div>
-            <div class="col-value">{{ $transaksi->nomor_telpon ?? '1237426424234' }}</div>
+            <div class="col-value">{{ $transaksi->nomor_telpon ?? '6285708437164' }}</div>
         </div>
         <div class="row">
             <div class="col-label">Waktu Transaksi</div>
-            <div class="col-value">{{ $transaksi->waktu_transaksi }}</div>
+            <div class="col-value">{{ date('d-m-Y',strtotime($transaksi->waktu_transaksi)) }}</div>
         </div>
         
         <hr>
@@ -130,7 +131,7 @@
         <div class="total">
             <div class="row">
                 <div class="col-label">TOTAL</div>
-                <div class="col-value">Rp {{ $transaksi->layanan->harga_per_kg * $transaksi->berat }}</div>
+                <div class="col-value">Rp {{ number_format($transaksi->layanan->harga_per_kg * $transaksi->berat,0,',',',') }}</div>
             </div>
         </div>
         

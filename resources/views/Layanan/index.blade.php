@@ -32,7 +32,7 @@
                 <tr>
                     <th scope="row">{{ $loop->iteration }}</th>
                     <td>{{$item->nama_layanan}}</td>
-                    <td>Rp{{ $item->harga_per_kg }}/kg</td>
+                    <td>Rp.{{ $item->harga_per_kg }}/kg</td>
                     <td><a class="btn btn-warning" href="/layanan/edit/{{ $item->id_layanan}}">Edit</a>
                     <a class="btn btn-danger" href="/layanan/delete/{{ $item->id_layanan }}">Hapus</a></td>
                 </tr>

@@ -4,11 +4,11 @@
     <div class="container">
 <h2 class="main-title">Ubah Transaksi {{ $transaksi->nama_pelanggan }}</h2>
 <article class="sign-up">
-    <form class="sign-up-form form" action="{{ route('transaksi.store') }}" method="POST">
+    <form class="sign-up-form form" action="/transaksi/update/{{ $transaksi -> id_transaksi }}" method="POST">
         @csrf
       <label class="form-label-wrapper">
         <p class="form-label">Waktu Transaksi</p>
-        <input class="form-input" name="waktu_transaksi" type="date" placeholder="Tanggal"  required{{ $transaksi -> waktu_transaksi }}>
+        <input class="form-input" name="waktu_transaksi" type="date" placeholder="Tanggal"  required value="{{ $transaksi -> waktu_transaksi }}">
       </label>
       <div class="input-group mb-3">
       <label class="form-label-wrapper">
@@ -24,7 +24,6 @@
           @if($item -> id_layanan = $transaksi -> id_layanan) selected
           @endif>{{ $item -> nama_layanan }}</option>
           @endforeach
-          <option>Haia</option>
         </select>
       </label>
       <label class="mb-3 form-label-wrapper">
@@ -33,22 +32,22 @@
       </label>
       <label class="mb-3 form-label-wrapper">
         <p class="form-label">Keterangan</p>
-        <select class="form-input" name="keterangan" type="text" placeholder="Keterangan" required>
-          <option selected disabled>Keterangan Transaksi</option>
+        <select class="form-input" name="keterangan" type="text" placeholder="Keterangan" required value="{{ $transaksi -> keterangan }}">
+          <option selected value="">Keterangan Transaksi</option>
           <option>Proses</option>
           <option>Selesai</option>
         </select>
       </label>
       <label class="mb-3 form-label-wrapper">
         <p class="form-label">Pembayaran</p>
-        <select class="form-input" name="pembayaran" type="text" placeholder="Pembayaran" required>
-          <option selected disabled>Keterangan Pembayaran</option>
+        <select class="form-input" name="pembayaran" type="text" placeholder="Pembayaran" required value="{{ $transaksi -> pembayaran }}">
+          <option selected value="">Keterangan Pembayaran</option>
           <option>Belum Bayar</option>
           <option>Lunas</option>
         </select>
       </label>
       </div>
-      <button type="submit" class="form-btn primary-default-btn transparent-btn">Sign in</button>
+      <button type="submit" class="form-btn primary-default-btn transparent-btn">Ubah</button>
     </form>
   </article>
     </div>

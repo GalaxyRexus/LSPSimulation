@@ -19,7 +19,7 @@
               </div>
               <div class="stat-cards-info">
                 <p class="stat-cards-info__num">Jumlah Layanan</p>
-                <p class="stat-cards-info__num">5</p>
+                <p class="stat-cards-info__num">{{ $jumlayanan }}</p>
               </div>
             </article>
           </div>
@@ -30,7 +30,7 @@
               </div>
               <div class="stat-cards-info">
                 <p class="stat-cards-info__num">Transaksi Baru</p>
-                <p class="stat-cards-info__num">3</p>
+                <p class="stat-cards-info__num">{{ $jumtrans }}</p>
               </div>
             </article>
           </div>
@@ -41,7 +41,7 @@
               </div>
               <div class="stat-cards-info">
                 <p class="stat-cards-info__num">Sedang Diproses</p>
-                <p class="stat-cards-info__num">2</p>
+                <p class="stat-cards-info__num">{{ $sedproses }}</p>
               </div>
             </article>
           </div>
@@ -52,7 +52,7 @@
               </div>
               <div class="stat-cards-info">
                 <p class="stat-cards-info__num">Belum Dibayar</p>
-                <p class="stat-cards-info__title">1</p>
+                <p class="stat-cards-info__num">{{ $belbay }}</p>
               </div>
             </article>
           </div>
@@ -74,30 +74,16 @@
                 </tr>
             </thead>
             <tbody>
+              @foreach ($transbaru as $item )
                 <tr>
-                    <td>1</td>
-                    <td>Ahmad</td>
-                    <td>Cuci Kering</td>
-                    <td>2 kg</td>
-                    <td>2024-06-01</td>
-                    <td>Belum Bayar</td>
+                    <td>{{ $loop -> iteration }}</td>
+                    <td>{{ $item -> nama_pelanggan }}</td>
+                    <td>{{ $item -> layanan -> nama_layanan }}</td>
+                    <td>{{ $item -> berat }}kg</td>
+                    <td>{{ date('d-m-Y', strtotime($item -> waktu_transaksi))}}</td>
+                    <td>{{ $item -> keterangan }}</td>
                 </tr>
-                <tr>
-                     <td>2</td>
-                    <td>Maulani</td>
-                    <td>Cuci Kering</td>
-                    <td>4 kg</td>
-                    <td>2024-07-01</td>
-                    <td>Lunas</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Budi</td>
-                    <td>Cuci Kering</td>
-                    <td>2024-06-03</td>
-                    <td>Belum Dibayar</td>
-                    <td>Rp 60.000</td>
-                </tr>
+                @endforeach
             </tbody>
         </table>
 </div>

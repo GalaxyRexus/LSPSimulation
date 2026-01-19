@@ -16,7 +16,7 @@
         <input class="form-input" name="harga_per_kg" type="number" placeholder="Masukkan Harga" required>
       </label>
       </div>
-      <button type="submit" class="form-btn primary-default-btn transparent-btn">Sign in</button>
+      <button type="submit" class="form-btn primary-default-btn transparent-btn">Tambah</button>
     </form>
   </article>
 </main>

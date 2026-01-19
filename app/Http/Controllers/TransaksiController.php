@@ -40,7 +40,7 @@ class TransaksiController extends Controller
             'keterangan' => $request->keterangan,
             'pembayaran' => $request->pembayaran,
         ]);
-        return redirect('/transaksi');
+        return redirect('/transaksi')->with('Berhasil');
     }
 
     /**
@@ -91,4 +91,12 @@ class TransaksiController extends Controller
         $transaksi = Transaksi::with('layanan')->where('id_transaksi', $id)->first();
         return view('Transaksi.struk', compact('transaksi'));
     }
+
+    // public function bayar (string $id){
+    //     $transaksi = Transaksi::findOrFail($id);
+    //     $transaksi -> pembayaran = 'Lunas';
+    //     $transaksi -> save();
+
+    //     return redirect ('Transaksi.index',)
+    // }
 }
